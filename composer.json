@@ -4,5 +4,8 @@
     },
     "autoload": {
         "psr-4": {"Loja\\": "src/"}
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
     }
 }

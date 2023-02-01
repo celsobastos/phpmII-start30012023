@@ -1,26 +1,58 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+function func01() {
+    echo 'Inicio Função 01 executada' . '<br>';
+    try {
+        func02();
+    }
+    catch (Throwable $e) {
+        echo $e->getMessage() . '<br>';
+        echo $e->getLine() . '<br>';
+        echo $e->getTraceAsString() . '<br>';
+        echo $e->getFile() . '<br>';
+    }
+    // catch (ArgumentCountError $e) {
+    //     echo 'Ops! Desculpa o transtorno ArgumentCountError. <br>';
+    // }
 
-use Loja\Empresa\Funcionarios as Emp;
-use Loja\Impacta\Funcionarios as Impacta;
-use Monolog\Level;
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
-
-$funcionario1 = new Impacta();
-$test = $funcionario1->testAccess('123');
-
-if ($test) {
-    // create a log channel
-    $log = new Logger('name');
-    $log->pushHandler(new StreamHandler('your.log', Level::Warning));
-
-    // add records to the log
-    $log->warning('Foo');
-    //$log->error('Bar');
-    echo 'Logado com sucesso!';
+    echo 'Fim Função 01 executada' . '<br>';
 }
-else {
-    echo 'Erro!';
+
+
+function conta($saque) {
+    $saldo = 200;
+
+    if($saldo < $saque) {
+       throw new DomainException('Ops! Saldo insuficiente!');
+    }
+    else {
+        $saldo -= $saque;
+    }
+};
+
+// function soma($n1, $n2) {
+//     echo 'ok';
+// }
+
+
+function func02() {
+
+    // $array = new SplFixedArray(5);
+    // $array[5] = 40;
+    //soma(1);
+    // $calc = 8/0;
+
+    conta(400);
+
+    echo 'Inicio Função 02 executada' . '<br>';
+    func03();
+    echo 'Fim Função 02 executada' . '<br>';
 }
+
+function func03() {
+    echo 'Inicio Função 03 executada' . '<br>';
+}
+
+echo 'Main sendo executado' . '<br>';
+func01();
+echo 'Fim do programa' . '<br>';
