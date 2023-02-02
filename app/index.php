@@ -2,12 +2,10 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
-use Loja\Model\Estagiario;
+use Loja\Model\Clientes;
 
-$funcionario = new Estagiario();
-$funcionario->setNome("Jonas");
-$funcionario->setSalario(2000);
-echo $funcionario->soma();
-//echo $funcionario->getSalario();
+$cli = new Clientes();
+$cli->setNome('Paulo da Silva  asdf f asdf asdf asfdasdf ');
 
-// var_dump($funcionario);
+echo '<pre>';
+var_dump($cli);

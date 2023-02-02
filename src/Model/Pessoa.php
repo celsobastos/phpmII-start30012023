@@ -10,12 +10,13 @@ abstract class Pessoa {
     protected string $cep;
 
     public function setNome(string $nome): void {
-        if(mb_strlen($nome) <= 20) {
+        $limite = $this->limiteCaracter();
+        if(mb_strlen($nome) <= $limite) {
             $this->nome = $nome;
             return;
         }
-        echo 'nome deve ser menor ou igual a 20 caracteres';
+        echo 'Erro, nome invalido';
     }
 
-
+    abstract protected function limiteCaracter() : int;
 }
