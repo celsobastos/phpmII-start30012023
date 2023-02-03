@@ -1,9 +1,9 @@
 <?php
 
-namespace Loja\Model;
+namespace Banco\Model\Pessoas;
 
 abstract class Funcionarios extends Pessoa {
-    protected float $salario;
+    protected float $salario = 500;
 
     protected function limiteCaracter() : int {
         return 150;

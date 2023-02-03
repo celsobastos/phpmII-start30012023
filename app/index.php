@@ -2,10 +2,14 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
-use Loja\Model\Clientes;
+use Banco\Services\ExecutaLogin;
+use Banco\Model\Pessoas\Clientes;
+use Banco\Model\Pessoas\Diretor;
+use Banco\Model\Pessoas\Estagiario;
 
-$cli = new Clientes();
-$cli->setNome('Paulo da Silva  asdf f asdf asdf asfdasdf ');
+// $bonus = new ExecutaLogin();
+// $bonus->bonificao(new Estagiario);
+// var_dump($bonus);
 
-echo '<pre>';
-var_dump($cli);
+$loginUser = new ExecutaLogin();
+echo $loginUser->acessarSistema(new Clientes(), '123');

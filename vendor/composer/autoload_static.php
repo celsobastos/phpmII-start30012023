@@ -15,9 +15,9 @@ class ComposerStaticInit9860856228db3f21afc38b499cfbfbd1
         array (
             'Monolog\\' => 8,
         ),
-        'L' => 
+        'B' => 
         array (
-            'Loja\\' => 5,
+            'Banco\\' => 6,
         ),
     );
 
@@ -30,7 +30,7 @@ class ComposerStaticInit9860856228db3f21afc38b499cfbfbd1
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'Loja\\' => 
+        'Banco\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

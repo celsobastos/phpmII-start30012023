@@ -1,6 +1,6 @@
 <?php
 
-namespace Loja\Model;
+namespace Banco\Model\Pessoas;
 
 abstract class Pessoa {
     protected string $nome;
