@@ -5,6 +5,7 @@ namespace Banco\Model\Contas;
 use Exception;
 
 abstract class Conta {
+    use \Banco\Model\MethodTrait;
     protected float $saldo = 1000;
 
     public function sacar(float $valorDoSaque): void {

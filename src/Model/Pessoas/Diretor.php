@@ -7,6 +7,12 @@ use Exception;
 
 class Diretor extends Funcionarios implements LoginInterface {
 
+    private string $premio;
+
+    public function __construct(string $premio){
+        $this->premio = $premio;
+    }
+
     public function bonificacao(float $bonificacao): void {
         $this->salario += $this->salario * 0.2;
     }
@@ -17,9 +23,5 @@ class Diretor extends Funcionarios implements LoginInterface {
         }
 
         throw new Exception('Senha invalida');
-    }
-
-    public function soma() {
-        echo 'Celso';
     }
 }

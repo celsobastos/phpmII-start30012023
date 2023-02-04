@@ -14,8 +14,8 @@ class ExecutaLogin {
         }
     }
 
-        // public function bonificao(Funcionarios $test) {
-        //   $test->
-        // }
+    public function bonificao(Funcionarios $funcionario, float $valor) {
+        $funcionario->bonificacao($valor);
+    }
 
 }
