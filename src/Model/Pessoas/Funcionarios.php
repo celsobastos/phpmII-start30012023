@@ -4,16 +4,17 @@ namespace Banco\Model\Pessoas;
 
 abstract class Funcionarios extends Pessoa {
 
-    // public function __construct(
-    //     protected string $nome,
-    //     protected string $cpf,
-    //     protected Endereco $endereco,
-    //     protected array $telefone,
-    //     protected float $salario,
-    // ) {
-    //     parent::__construct($nome, $cpf, $endereco, $telefone = []);
-    //     $this->salario = $salario;
-    // }
+    public function __construct(
+        protected string $nome,
+        protected string $cpf,
+        protected Endereco $endereco,
+        /** @var Telefone[] $telefone */
+        protected array $telefone,
+        protected float $salario,
+    ) {
+        parent::__construct($nome, $cpf, $endereco, $telefone = []);
+        $this->salario = $salario;
+    }
 
     protected function limiteCaracter() : int {
         return 150;

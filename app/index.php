@@ -12,11 +12,17 @@ use Banco\Model\Pessoas\Telefone;
 //$estagiario->nome = 'Amanda';
 //echo $estagiario;
 
-$estagiario = new Estagiario(
+$estagiario = new Estagiario (
     nome: 'Celso',
-    cpf: '213132',
-    endereco: new Endereco('123', '15646-4', 'Ruas das flores'),
+    cpf: '12345',
+    endereco: new Endereco('123', '123456','Rua das Flores'),
+    telefone: [],
+    salario: 500
 );
+
+echo '<pre>';
+var_dump($estagiario);
+die;
 
 // $fone =  new Telefone('11', '95826-0001');
 
