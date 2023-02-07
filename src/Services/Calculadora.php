@@ -9,7 +9,6 @@ class Calculadora {
         if($n1 === -1) {
             return false;
         }
-
         return $n1 + $n2;
     }
 }

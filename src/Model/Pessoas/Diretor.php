@@ -24,4 +24,11 @@ class Diretor extends Funcionarios implements LoginInterface {
 
         throw new Exception('Senha invalida');
     }
+
+    public function verificaNome($nome) {
+        if ($nome === '') {
+            return false;
+        }
+        return true;
+    }
 }

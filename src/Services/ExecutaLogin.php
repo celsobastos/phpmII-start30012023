@@ -8,14 +8,35 @@ use Banco\Model\Pessoas\Diretor;
 use Banco\Model\Pessoas\Clientes;
 
 class ExecutaLogin {
+
     public function acessarSistema(LoginInterface $login, string $senha) {
         if($login->logar($senha)) {
-            echo 'Logado com sucesso!';
+            return true;
+        }
+
+        return false;
+    }
+
+    public function executaBonificao(Funcionarios $funcionario, float $valor) {
+        $funcionario->bonificacao($valor);
+    }
+
+    public function validaEmail(string $email) {
+        if(!str_ends_with($email, '@impacta.com')) {
+            throw new \InvalidArgumentException('Email Invalido');
         }
     }
 
-    public function bonificao(Funcionarios $funcionario, float $valor) {
-        $funcionario->bonificacao($valor);
+    public function getNome($nome, Diretor $diretor) {
+        $tst = $diretor->verificaNome($nome);
+        if (!$diretor->verificaNome($nome)) {
+            return false;
+        }
+        return true;
+
+
     }
+
+
 
 }
