@@ -6,7 +6,6 @@
         "psr-4": {"Banco\\": "src/"}
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "3.*",
-        "phpunit/phpunit": "^10"
+        "phpunit/phpunit": "^9"
     }
 }
