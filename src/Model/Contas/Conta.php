@@ -7,25 +7,13 @@ use Exception;
 abstract class Conta {
     use \Banco\Model\MethodTrait;
     protected float $saldo = 1000;
-    public $tipo;
 
-    public function __construct(int $tipo)
-    {
-        $this->tipo = $tipo;
+    public function sacar(float $valorDoSaque): void {
+        if ($valorDoSaque > $this->saldo) {
+            throw new Exception('Valor insuficiente');
+        }
+        $this->saldo -= $valorDoSaque + $valorDoSaque * $this->taxa();
     }
 
-    public function cobrarTaxa($tipo) {
-        if ($tipo == 1) {
-            return 0.05;
-        }
-        elseif ($tipo == 1) {
-            return 0;
-        }
-
-    }
+    abstract protected function taxa(float $valorTaxa = 0.03) : float;
 }
-
-
-
-$contaCorrente = new Conta(1); // conta corrente
-$contaCorrente = new Conta(2); // conta Poupanca
