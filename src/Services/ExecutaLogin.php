@@ -28,7 +28,6 @@ class ExecutaLogin {
     }
 
     public function getNome($nome, Diretor $diretor) {
-        $tst = $diretor->verificaNome($nome);
         if (!$diretor->verificaNome($nome)) {
             return false;
         }

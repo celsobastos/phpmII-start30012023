@@ -2,79 +2,142 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
-use Banco\Services\ExecutaLogin;
-use Banco\Model\Pessoas\Clientes;
-use Banco\Model\Pessoas\Diretor;
-use Banco\Model\Pessoas\Estagiario;
-use Banco\Model\Pessoas\Endereco;
-use Banco\Model\Pessoas\Telefone;
 
-//$estagiario->nome = 'Amanda';
-//echo $estagiario;
+try {
+    $conn = new PDO(
+        'mysql:host=localhost;dbname=escola',
+        'root',
+        '123456789'
+    );
 
-$estagiario = new Estagiario (
-    nome: 'Celso',
-    cpf: '12345',
-    endereco: new Endereco('123', '123456','Rua das Flores'),
-    telefone: [],
-    salario: 500
-);
+    $conn->setAttribute(
+        PDO::ATTR_ERRMODE,
+        PDO::ERRMODE_EXCEPTION
+    );
 
-echo '<pre>';
-var_dump($estagiario);
-die;
+    $conn->setAttribute(
+        PDO::ATTR_DEFAULT_FETCH_MODE,
+        PDO::FETCH_ASSOC
+    );
 
-// $fone =  new Telefone('11', '95826-0001');
+    // $result = $conn->exec("INSERT INTO alunos (name) VALUES ('Cintia'), ('Jonas');");
+    // if ($result) {
+    //     echo $result;
+    // }
 
-// for($i = 1; $i <= 4 ; $i++) {
-//     $estagiario->addTelefone(new Telefone('11', '95826-000'. $i));
-// }
+    // $statment = $conn->query("SELECT * FROM alunos;");
+    // $result = $statment->fetchAll();
+
+    // echo '<pre>';
+    // print_r($result);
+    // die;
+
+    // $id = $_GET['id'] ?? 1;
+    // $sql = "SELECT * FROM alunos where id = '" . $id . "';";
+    // $statment = $conn->query($sql);
+
+    // while ($result = $statment->fetch()) {
+    //     echo "id: {$result['id']} - Aluno: {$result['name']} <br>";
+    // }
+    // echo '<pre>';
+    // print_r($result);
+    // die;
+
+    $id = $_GET['id'] ?? 1;
+
+    $sql = "SELECT * FROM alunos where id = :id";
+    $statment = $conn->prepare($sql);
+    $statment->execute([
+        ':id' => $id,
+    ]);
+
+    while ($result = $statment->fetch()) {
+        echo "id: {$result['id']} - Aluno: {$result['name']} <br>";
+    }
+    echo '<pre>';
+    print_r($result);
+    die;
 
 
-// $fone =  new Telefone('11', '95826-0001');
-$estagiario->addTelefone(new Telefone('11', '95826-0002'));
-$estagiario->addTelefone(new Telefone('21', '92455-0007'));
-$estagiario->addTelefone(new Telefone('21', '92455-0007'));
-$estagiario->addTelefone(new Telefone('21', '92455-0007'));
+} catch (PDOException $e) {
+    echo $e->getMessage('Conexão falhou');
+}
 
-echo '<pre>';
-var_dump($estagiario);
-die;
 
-echo '<pre>';
-var_dump($estagiario);
-die;
 
-$estagiario->setSalario(2000);
-echo $estagiario->salario; // __get
+// use Banco\Services\ExecutaLogin;
+// use Banco\Model\Pessoas\Clientes;
+// use Banco\Model\Pessoas\Diretor;
+// use Banco\Model\Pessoas\Estagiario;
+// use Banco\Model\Pessoas\Endereco;
+// use Banco\Model\Pessoas\Telefone;
+
+// //$estagiario->nome = 'Amanda';
+// //echo $estagiario;
+
+// $estagiario = new Estagiario (
+//     nome: 'Celso',
+//     cpf: '12345',
+//     endereco: new Endereco('123', '123456','Rua das Flores'),
+//     telefone: [],
+//     salario: 500
+// );
+
+// echo '<pre>';
+// var_dump($estagiario);
+// die;
+
+// // $fone =  new Telefone('11', '95826-0001');
+
+// // for($i = 1; $i <= 4 ; $i++) {
+// //     $estagiario->addTelefone(new Telefone('11', '95826-000'. $i));
+// // }
+
+
+// // $fone =  new Telefone('11', '95826-0001');
+// $estagiario->addTelefone(new Telefone('11', '95826-0002'));
+// $estagiario->addTelefone(new Telefone('21', '92455-0007'));
+// $estagiario->addTelefone(new Telefone('21', '92455-0007'));
+// $estagiario->addTelefone(new Telefone('21', '92455-0007'));
+
+// echo '<pre>';
+// var_dump($estagiario);
+// die;
+
+// echo '<pre>';
+// var_dump($estagiario);
+// die;
+
+// $estagiario->setSalario(2000);
+// echo $estagiario->salario; // __get
+
+// // var_dump($estagiario);
+// die;
+
+// $diretor = new Diretor(200);
+// echo '<pre>';
+// var_dump($diretor);
+// die;
+
+// $estagiario = new Estagiario();
+// $estagiario->setSalario(2000);
+// var_dump($estagiario);
+// echo '<hr>';
+
+// $estagiarioBonificacao = new ExecutaLogin();
+// $estagiarioBonificacao->bonificao($estagiario, 0.06);
+
 
 // var_dump($estagiario);
-die;
 
-$diretor = new Diretor(200);
-echo '<pre>';
-var_dump($diretor);
-die;
+// echo '<hr>';
 
-$estagiario = new Estagiario();
-$estagiario->setSalario(2000);
-var_dump($estagiario);
-echo '<hr>';
-
-$estagiarioBonificacao = new ExecutaLogin();
-$estagiarioBonificacao->bonificao($estagiario, 0.06);
+// $diretor = new Diretor();
+// $diretor->setSalario(2000);
+// $diretorBonificacao = new ExecutaLogin();
+// $diretorBonificacao->bonificao($diretor, 0.1);
+// var_dump($diretor);
 
 
-var_dump($estagiario);
-
-echo '<hr>';
-
-$diretor = new Diretor();
-$diretor->setSalario(2000);
-$diretorBonificacao = new ExecutaLogin();
-$diretorBonificacao->bonificao($diretor, 0.1);
-var_dump($diretor);
-
-
-// $loginUser = new ExecutaLogin();
-// echo $loginUser->acessarSistema(new Clientes(), '123');
+// // $loginUser = new ExecutaLogin();
+// // echo $loginUser->acessarSistema(new Clientes(), '123');
