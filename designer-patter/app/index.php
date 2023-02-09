@@ -2,8 +2,6 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-\session_start();
-
 $route = $_SERVER['PATH_INFO'] ?? '/cursos';
 $routes = require __DIR__ . '/../Routes/routes.php';
 
